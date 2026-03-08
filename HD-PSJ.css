@@ -1,6 +1,6 @@
 <style>
 /* =========================
-   RESET MOBILE TOP SPACE
+   RESET MOBILE
    ========================= */
 @media (max-width:768px){
   html,
@@ -18,7 +18,7 @@
 }
 
 /* =========================
-   APK BANNER DI ATAS
+   APK BANNER
    ========================= */
 @media (max-width:768px){
   .apk-download-notification,
@@ -28,8 +28,36 @@
   .top-notification{
     position:relative !important;
     z-index:10001 !important;
-    background:#5f5f5f !important; /* supaya tidak hitam */
-    overflow:visible !important;
+    background:#5f5f5f !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  /* HILANGKAN SPACE KOSONG SETELAH BANNER APK */
+  .apk-download-notification + *,
+  .apk-download-bar + *,
+  .download-banner + *,
+  .top-banner + *,
+  .top-notification + *{
+    margin-top:0 !important;
+    padding-top:0 !important;
+  }
+
+  /* jika ada spacer kosong setelah banner */
+  .apk-download-notification + .header-spacer,
+  .apk-download-notification + .top-spacer,
+  .apk-download-notification + .site-header-spacer,
+  .apk-download-bar + .header-spacer,
+  .download-banner + .header-spacer,
+  .top-banner + .header-spacer,
+  .top-notification + .header-spacer{
+    display:none !important;
+    height:0 !important;
+    min-height:0 !important;
+    max-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
   }
 }
 
@@ -40,6 +68,8 @@
   position:relative !important;
   overflow:visible !important;
   z-index:50 !important;
+  margin-top:0 !important;
+  padding-top:0 !important;
 }
 
 .site-header::before{
@@ -58,6 +88,8 @@
 .site-header .nav{
   position:relative !important;
   z-index:2 !important;
+  margin-top:0 !important;
+  padding-top:0 !important;
 }
 
 .site-header .dropdown-menu,
@@ -68,28 +100,19 @@
 }
 
 /* =========================
-   MOBILE HEADER
+   MOBILE HEADER BACKGROUND
    ========================= */
 @media (max-width:768px){
-  .site-header{
-    margin-top:0 !important;
-    background-color:transparent !important;
-  }
-
   .site-header::before{
     background:url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover !important;
     opacity:.95;
   }
 
-  /* pastikan header tidak menimpa banner APK */
-  .apk-download-notification + .site-header,
-  .apk-download-bar + .site-header,
-  .download-banner + .site-header,
-  .top-banner + .site-header,
-  .top-notification + .site-header{
+  /* pastikan tidak ada ruang kosong sebelum header */
+  .site-header{
+    top:0 !important;
     margin-top:0 !important;
-    position:relative !important;
-    z-index:50 !important;
+    padding-top:0 !important;
   }
 }
 </style>
