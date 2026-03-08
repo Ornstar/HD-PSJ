@@ -54,40 +54,37 @@
     top: 0 !important;
   }
 
-  /* banner apk tetap normal */
-  .download-apk-notification,
-  .apk-download-notification,
-  .apk-download-bar,
-  .download-banner,
-  .top-banner,
-  .top-notification {
+  /* banner apk asli */
+  .download-apk-notification {
+    display: flex !important;
     position: relative !important;
     z-index: 10001 !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: #5f5f5f !important;
     overflow: visible !important;
+    background: #5f5f5f !important;
   }
 
-  /* ini bagian paling penting:
-     hilangkan space kosong atas dari inner-body */
-  .inner-body-container > .inner-body,
-  #scroll_container.inner-body,
-  #scroll_container {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-
-  /* pertahankan ruang bawah untuk bottom menu */
+  /* hilangkan gap atas, tapi bawah tetap aman */
   .inner-body-container > .inner-body {
-    padding-bottom: 52px !important;
+    padding: 0 0 52px !important;
+    margin: 0 !important;
+    overflow: auto !important;
   }
 
-  /* background header versi mobile */
+  #scroll_container,
+  #scroll_container.inner-body,
+  #inner_body_container,
+  .inner-body-container,
+  .inner-body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
   .site-header {
+    top: 0 !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
-    top: 0 !important;
   }
 
   .site-header::before {
