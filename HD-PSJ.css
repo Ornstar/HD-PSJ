@@ -1,62 +1,76 @@
-(function() {
-
-  const css = `
-  /* =========================
-     HEADER BACKGROUND
-  ========================= */
-  .site-header{
-    background-image:url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") !important;
-    background-size:cover !important;
-    background-position:center center !important;
-    background-repeat:no-repeat !important;
-    background-attachment:scroll !important;
-    position:relative !important;
-    z-index:50 !important;
+<style>
+/* =========================
+   FIX SPACE TOP (MOBILE SAJA)
+   sumber: #scroll_container.inner-body (inspect kamu)
+   ========================= */
+@media (max-width:768px){
+  #scroll_container,
+  #scroll_container.inner-body{
+    padding: 0 !important;
+    margin: 0 !important;
+    top: 0 !important;
   }
 
-  /* =========================
-     MOBILE FIX
-  ========================= */
-  @media (max-width:768px){
-
-    :root{
-      --topbar-height:46px;
-      --header-height:58px;
-    }
-
-    .site-header{
-      background-image:url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") !important;
-      background-size:cover !important;
-      background-position:left center !important;
-      background-repeat:no-repeat !important;
-
-      position:fixed !important;
-      top:var(--topbar-height) !important;
-      left:0 !important;
-      right:0 !important;
-      width:100% !important;
-      height:var(--header-height) !important;
-      z-index:9999 !important;
-    }
-
-    /* dorong konten agar tidak ketimpa header */
-    .main,
-    .content,
-    .container,
-    .container-fluid,
-    #scroll_container,
-    #scroll_container.inner-body,
-    .inner-body,
-    .inner-body-container,
-    #inner_body_container{
-      margin-top:calc(var(--topbar-height) + var(--header-height)) !important;
-    }
-
+  #inner_body_container,
+  .inner-body-container,
+  .inner-body{
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  `;
 
-  const styleTag = document.createElement("style");
-  styleTag.textContent = css;
-  document.head.appendChild(styleTag);
+  body.has-apk-download-notification{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
 
-})();
+/* =========================
+   HEADER BASE (dropdown aman)
+   ========================= */
+.site-header{
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 50 !important;
+}
+
+/* =========================
+   BACKGROUND LAYER (DESKTOP DEFAULT)
+   ========================= */
+.site-header::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;                 /* ikut cara aman kamu */
+  pointer-events: none;
+  background: url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") no-repeat center center / 100% 100%;
+}
+
+/* =========================
+   NAV + DROPDOWN selalu di atas
+   ========================= */
+.site-header nav,
+.site-header .navbar,
+.site-header .menu,
+.site-header .main-menu,
+.site-header .nav{
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+.site-header .dropdown-menu,
+.site-header .sub-menu,
+.site-header .submenu{
+  position: absolute !important;
+  z-index: 10000 !important;
+}
+
+/* =========================
+   MOBILE (<=768px)
+   ========================= */
+@media (max-width:768px){
+  .site-header::before{
+    background: url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover;
+    opacity: .95;
+  }
+}
+</style>
