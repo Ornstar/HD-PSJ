@@ -1,13 +1,11 @@
 <style>
 /* =========================
-   HEADER DEFAULT
+   DESKTOP DEFAULT
    ========================= */
 .site-header {
   position: relative !important;
   overflow: visible !important;
   z-index: 50 !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 .site-header::before {
@@ -27,8 +25,6 @@
 .site-header .nav {
   position: relative !important;
   z-index: 2 !important;
-  margin: 0 !important;
-  padding-top: 0 !important;
 }
 
 .site-header .dropdown-menu,
@@ -39,7 +35,7 @@
 }
 
 /* =========================
-   MOBILE FIX
+   MOBILE ONLY
    ========================= */
 @media (max-width: 768px) {
   html,
@@ -63,9 +59,12 @@
     padding: 0 !important;
     overflow: visible !important;
     background: #5f5f5f !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
   }
 
-  /* hilangkan gap atas, tapi bawah tetap aman */
+  /* hilangkan gap atas mobile */
   .inner-body-container > .inner-body {
     padding: 0 0 52px !important;
     margin: 0 !important;
@@ -81,8 +80,8 @@
     margin-top: 0 !important;
   }
 
+  /* header mobile */
   .site-header {
-    top: 0 !important;
     margin-top: 0 !important;
     padding-top: 0 !important;
   }
