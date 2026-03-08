@@ -1,76 +1,95 @@
 <style>
 /* =========================
-   FIX SPACE TOP (MOBILE SAJA)
-   sumber: #scroll_container.inner-body (inspect kamu)
+   RESET MOBILE TOP SPACE
    ========================= */
 @media (max-width:768px){
+  html,
+  body,
   #scroll_container,
-  #scroll_container.inner-body{
-    padding: 0 !important;
-    margin: 0 !important;
-    top: 0 !important;
-  }
-
+  #scroll_container.inner-body,
   #inner_body_container,
   .inner-body-container,
-  .inner-body{
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
+  .inner-body,
   body.has-apk-download-notification{
-    padding: 0 !important;
-    margin: 0 !important;
+    margin:0 !important;
+    padding:0 !important;
+    top:0 !important;
   }
 }
 
 /* =========================
-   HEADER BASE (dropdown aman)
+   APK BANNER DI ATAS
+   ========================= */
+@media (max-width:768px){
+  .apk-download-notification,
+  .apk-download-bar,
+  .download-banner,
+  .top-banner,
+  .top-notification{
+    position:relative !important;
+    z-index:10001 !important;
+    background:#5f5f5f !important; /* supaya tidak hitam */
+    overflow:visible !important;
+  }
+}
+
+/* =========================
+   HEADER BASE
    ========================= */
 .site-header{
-  position: relative !important;
-  overflow: visible !important;
-  z-index: 50 !important;
+  position:relative !important;
+  overflow:visible !important;
+  z-index:50 !important;
 }
 
-/* =========================
-   BACKGROUND LAYER (DESKTOP DEFAULT)
-   ========================= */
 .site-header::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;                 /* ikut cara aman kamu */
-  pointer-events: none;
-  background: url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") no-repeat center center / 100% 100%;
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1 !important;
+  pointer-events:none;
+  background:url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") no-repeat center center / 100% 100%;
 }
 
-/* =========================
-   NAV + DROPDOWN selalu di atas
-   ========================= */
 .site-header nav,
 .site-header .navbar,
 .site-header .menu,
 .site-header .main-menu,
 .site-header .nav{
-  position: relative !important;
-  z-index: 9999 !important;
+  position:relative !important;
+  z-index:2 !important;
 }
 
 .site-header .dropdown-menu,
 .site-header .sub-menu,
 .site-header .submenu{
-  position: absolute !important;
-  z-index: 10000 !important;
+  position:absolute !important;
+  z-index:10000 !important;
 }
 
 /* =========================
-   MOBILE (<=768px)
+   MOBILE HEADER
    ========================= */
 @media (max-width:768px){
+  .site-header{
+    margin-top:0 !important;
+    background-color:transparent !important;
+  }
+
   .site-header::before{
-    background: url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover;
-    opacity: .95;
+    background:url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover !important;
+    opacity:.95;
+  }
+
+  /* pastikan header tidak menimpa banner APK */
+  .apk-download-notification + .site-header,
+  .apk-download-bar + .site-header,
+  .download-banner + .site-header,
+  .top-banner + .site-header,
+  .top-notification + .site-header{
+    margin-top:0 !important;
+    position:relative !important;
+    z-index:50 !important;
   }
 }
 </style>
