@@ -1,43 +1,46 @@
 <style>
 /* =========================
-   DESKTOP DEFAULT
+   DESKTOP
    ========================= */
-.site-header {
+.site-header{
   position: relative !important;
   overflow: visible !important;
   z-index: 50 !important;
+
+  background: url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") no-repeat center center / 100% 100% !important;
 }
 
-.site-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1 !important;
-  pointer-events: none;
-  background: url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png")
-    no-repeat center center / 100% 100%;
+/* pastikan wrapper dalam header transparan */
+.site-header > .container,
+.site-header .row,
+.site-header .desktop-header-inner-container,
+.site-header .logo,
+.site-header .menu-slide,
+.site-header .top-menu{
+  background: transparent !important;
 }
 
+/* nav & dropdown */
 .site-header nav,
 .site-header .navbar,
 .site-header .menu,
 .site-header .main-menu,
-.site-header .nav {
+.site-header .nav{
   position: relative !important;
   z-index: 2 !important;
 }
 
 .site-header .dropdown-menu,
 .site-header .sub-menu,
-.site-header .submenu {
+.site-header .submenu{
   position: absolute !important;
   z-index: 10000 !important;
 }
 
 /* =========================
-   MOBILE ONLY
+   MOBILE
    ========================= */
-@media (max-width: 768px) {
+@media (max-width:768px){
   html,
   body,
   #scroll_container,
@@ -45,51 +48,52 @@
   #inner_body_container,
   .inner-body-container,
   .inner-body,
-  body.has-apk-download-notification {
-    margin: 0 !important;
-    top: 0 !important;
+  body.has-apk-download-notification{
+    margin:0 !important;
+    top:0 !important;
   }
 
-  /* banner apk asli */
-  .download-apk-notification {
-    display: flex !important;
-    position: relative !important;
-    z-index: 10001 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    background: #5f5f5f !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
+  .download-apk-notification{
+    display:flex !important;
+    position:relative !important;
+    z-index:10001 !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:visible !important;
+    background:#5f5f5f !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
   }
 
-  /* hilangkan gap atas mobile */
-  .inner-body-container > .inner-body {
-    padding: 0 0 52px !important;
-    margin: 0 !important;
-    overflow: auto !important;
+  .inner-body-container > .inner-body{
+    padding:0 0 52px !important;
+    margin:0 !important;
+    overflow:auto !important;
   }
 
   #scroll_container,
   #scroll_container.inner-body,
   #inner_body_container,
   .inner-body-container,
-  .inner-body {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
+  .inner-body{
+    padding-top:0 !important;
+    margin-top:0 !important;
   }
 
-  /* header mobile */
-  .site-header {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+  .site-header{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    background:url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover !important;
   }
 
-  .site-header::before {
-    background: url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png")
-      no-repeat left center / cover !important;
-    opacity: 0.95;
+  .site-header > .container,
+  .site-header .row,
+  .site-header .desktop-header-inner-container,
+  .site-header .logo,
+  .site-header .menu-slide,
+  .site-header .top-menu{
+    background:transparent !important;
   }
 }
 </style>
