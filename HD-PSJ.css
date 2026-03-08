@@ -31,9 +31,10 @@
     background:#5f5f5f !important;
     margin:0 !important;
     padding:0 !important;
+    overflow:visible !important;
   }
 
-  /* HILANGKAN SPACE KOSONG SETELAH BANNER APK */
+  /* rapatkan elemen setelah banner */
   .apk-download-notification + *,
   .apk-download-bar + *,
   .download-banner + *,
@@ -43,7 +44,7 @@
     padding-top:0 !important;
   }
 
-  /* jika ada spacer kosong setelah banner */
+  /* jika ada spacer class umum */
   .apk-download-notification + .header-spacer,
   .apk-download-notification + .top-spacer,
   .apk-download-notification + .site-header-spacer,
@@ -108,7 +109,6 @@
     opacity:.95;
   }
 
-  /* pastikan tidak ada ruang kosong sebelum header */
   .site-header{
     top:0 !important;
     margin-top:0 !important;
@@ -116,3 +116,79 @@
   }
 }
 </style>
+
+<script>
+(function () {
+  "use strict";
+
+  function fixGapUnderApkBanner() {
+    if (window.innerWidth > 768) return;
+
+    const banner =
+      document.querySelector(".apk-download-notification") ||
+      document.querySelector(".apk-download-bar") ||
+      document.querySelector(".download-banner") ||
+      document.querySelector(".top-banner") ||
+      document.querySelector(".top-notification");
+
+    const header = document.querySelector(".site-header");
+    if (!banner || !header) return;
+
+    banner.style.marginBottom = "0";
+    banner.style.paddingBottom = "0";
+
+    header.style.marginTop = "0";
+    header.style.paddingTop = "0";
+
+    let node = banner.nextElementSibling;
+
+    while (node && node !== header) {
+      const text = (node.textContent || "").trim();
+      const hasChildren = node.children.length > 0;
+      const rect = node.getBoundingClientRect();
+
+      const looksEmpty =
+        text === "" &&
+        (!hasChildren || rect.height <= 120);
+
+      if (looksEmpty) {
+        node.style.display = "none";
+        node.style.height = "0";
+        node.style.minHeight = "0";
+        node.style.maxHeight = "0";
+        node.style.margin = "0";
+        node.style.padding = "0";
+        node.style.border = "0";
+        node.style.overflow = "hidden";
+      } else {
+        node.style.marginTop = "0";
+        node.style.paddingTop = "0";
+      }
+
+      node = node.nextElementSibling;
+    }
+  }
+
+  function boot() {
+    fixGapUnderApkBanner();
+
+    const observer = new MutationObserver(() => {
+      fixGapUnderApkBanner();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    window.addEventListener("resize", fixGapUnderApkBanner);
+    window.addEventListener("load", fixGapUnderApkBanner);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
+</script>
