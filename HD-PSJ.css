@@ -33,18 +33,26 @@
 }
 
 /* =========================
-   MOBILE FIXED HEADER
+   MOBILE FIX
    ========================= */
 @media (max-width: 768px) {
+  :root {
+    --apk-bar-height: 46px;      /* tinggi bar hijau / notifikasi atas */
+    --mobile-header-height: 58px; /* tinggi header merah */
+  }
+
+  /* header merah turun ke bawah bar hijau */
   .site-header {
     position: fixed !important;
-    top: 0 !important;
+    top: var(--apk-bar-height) !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
+    height: var(--mobile-header-height) !important;
+    min-height: var(--mobile-header-height) !important;
+    max-height: var(--mobile-header-height) !important;
     z-index: 9999 !important;
     overflow: hidden !important;
-    max-height: 72px !important;
   }
 
   .site-header::before {
@@ -53,17 +61,37 @@
   }
 
   .site-header nav,
-  .site-header .navbar {
-    min-height: 72px !important;
+  .site-header .navbar,
+  .site-header .menu,
+  .site-header .main-menu,
+  .site-header .nav {
+    height: var(--mobile-header-height) !important;
+    min-height: var(--mobile-header-height) !important;
+    max-height: var(--mobile-header-height) !important;
   }
 
+  /* HAPUS ruang kosong hitam besar */
   #scroll_container,
   #scroll_container.inner-body,
   #inner_body_container,
   .inner-body-container,
   .inner-body,
   body.has-apk-download-notification {
-    padding-top: 72px !important;
-    box-sizing: border-box !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* dorong isi utama ke bawah total tinggi bar hijau + header merah */
+  .main,
+  .content,
+  .container,
+  .container-fluid,
+  .page-content,
+  .register,
+  .register-form,
+  form {
+    margin-top: calc(var(--apk-bar-height) + var(--mobile-header-height)) !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 }
