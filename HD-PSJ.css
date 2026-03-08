@@ -1,8 +1,47 @@
 <style>
 /* =========================
-   RESET MOBILE
+   HEADER DEFAULT
    ========================= */
-@media (max-width:768px){
+.site-header {
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 50 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1 !important;
+  pointer-events: none;
+  background: url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png")
+    no-repeat center center / 100% 100%;
+}
+
+.site-header nav,
+.site-header .navbar,
+.site-header .menu,
+.site-header .main-menu,
+.site-header .nav {
+  position: relative !important;
+  z-index: 2 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+}
+
+.site-header .dropdown-menu,
+.site-header .sub-menu,
+.site-header .submenu {
+  position: absolute !important;
+  z-index: 10000 !important;
+}
+
+/* =========================
+   MOBILE FIX
+   ========================= */
+@media (max-width: 768px) {
   html,
   body,
   #scroll_container,
@@ -10,185 +49,51 @@
   #inner_body_container,
   .inner-body-container,
   .inner-body,
-  body.has-apk-download-notification{
-    margin:0 !important;
-    padding:0 !important;
-    top:0 !important;
+  body.has-apk-download-notification {
+    margin: 0 !important;
+    top: 0 !important;
   }
-}
 
-/* =========================
-   APK BANNER
-   ========================= */
-@media (max-width:768px){
+  /* banner apk tetap normal */
+  .download-apk-notification,
   .apk-download-notification,
   .apk-download-bar,
   .download-banner,
   .top-banner,
-  .top-notification{
-    position:relative !important;
-    z-index:10001 !important;
-    background:#5f5f5f !important;
-    margin:0 !important;
-    padding:0 !important;
-    overflow:visible !important;
+  .top-notification {
+    position: relative !important;
+    z-index: 10001 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #5f5f5f !important;
+    overflow: visible !important;
   }
 
-  /* rapatkan elemen setelah banner */
-  .apk-download-notification + *,
-  .apk-download-bar + *,
-  .download-banner + *,
-  .top-banner + *,
-  .top-notification + *{
-    margin-top:0 !important;
-    padding-top:0 !important;
+  /* ini bagian paling penting:
+     hilangkan space kosong atas dari inner-body */
+  .inner-body-container > .inner-body,
+  #scroll_container.inner-body,
+  #scroll_container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
   }
 
-  /* jika ada spacer class umum */
-  .apk-download-notification + .header-spacer,
-  .apk-download-notification + .top-spacer,
-  .apk-download-notification + .site-header-spacer,
-  .apk-download-bar + .header-spacer,
-  .download-banner + .header-spacer,
-  .top-banner + .header-spacer,
-  .top-notification + .header-spacer{
-    display:none !important;
-    height:0 !important;
-    min-height:0 !important;
-    max-height:0 !important;
-    margin:0 !important;
-    padding:0 !important;
-    overflow:hidden !important;
-  }
-}
-
-/* =========================
-   HEADER BASE
-   ========================= */
-.site-header{
-  position:relative !important;
-  overflow:visible !important;
-  z-index:50 !important;
-  margin-top:0 !important;
-  padding-top:0 !important;
-}
-
-.site-header::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1 !important;
-  pointer-events:none;
-  background:url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") no-repeat center center / 100% 100%;
-}
-
-.site-header nav,
-.site-header .navbar,
-.site-header .menu,
-.site-header .main-menu,
-.site-header .nav{
-  position:relative !important;
-  z-index:2 !important;
-  margin-top:0 !important;
-  padding-top:0 !important;
-}
-
-.site-header .dropdown-menu,
-.site-header .sub-menu,
-.site-header .submenu{
-  position:absolute !important;
-  z-index:10000 !important;
-}
-
-/* =========================
-   MOBILE HEADER BACKGROUND
-   ========================= */
-@media (max-width:768px){
-  .site-header::before{
-    background:url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover !important;
-    opacity:.95;
+  /* pertahankan ruang bawah untuk bottom menu */
+  .inner-body-container > .inner-body {
+    padding-bottom: 52px !important;
   }
 
-  .site-header{
-    top:0 !important;
-    margin-top:0 !important;
-    padding-top:0 !important;
+  /* background header versi mobile */
+  .site-header {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    top: 0 !important;
+  }
+
+  .site-header::before {
+    background: url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png")
+      no-repeat left center / cover !important;
+    opacity: 0.95;
   }
 }
 </style>
-
-<script>
-(function () {
-  "use strict";
-
-  function fixGapUnderApkBanner() {
-    if (window.innerWidth > 768) return;
-
-    const banner =
-      document.querySelector(".apk-download-notification") ||
-      document.querySelector(".apk-download-bar") ||
-      document.querySelector(".download-banner") ||
-      document.querySelector(".top-banner") ||
-      document.querySelector(".top-notification");
-
-    const header = document.querySelector(".site-header");
-    if (!banner || !header) return;
-
-    banner.style.marginBottom = "0";
-    banner.style.paddingBottom = "0";
-
-    header.style.marginTop = "0";
-    header.style.paddingTop = "0";
-
-    let node = banner.nextElementSibling;
-
-    while (node && node !== header) {
-      const text = (node.textContent || "").trim();
-      const hasChildren = node.children.length > 0;
-      const rect = node.getBoundingClientRect();
-
-      const looksEmpty =
-        text === "" &&
-        (!hasChildren || rect.height <= 120);
-
-      if (looksEmpty) {
-        node.style.display = "none";
-        node.style.height = "0";
-        node.style.minHeight = "0";
-        node.style.maxHeight = "0";
-        node.style.margin = "0";
-        node.style.padding = "0";
-        node.style.border = "0";
-        node.style.overflow = "hidden";
-      } else {
-        node.style.marginTop = "0";
-        node.style.paddingTop = "0";
-      }
-
-      node = node.nextElementSibling;
-    }
-  }
-
-  function boot() {
-    fixGapUnderApkBanner();
-
-    const observer = new MutationObserver(() => {
-      fixGapUnderApkBanner();
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
-
-    window.addEventListener("resize", fixGapUnderApkBanner);
-    window.addEventListener("load", fixGapUnderApkBanner);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
-    boot();
-  }
-})();
-</script>
