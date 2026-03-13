@@ -1,47 +1,51 @@
-/* =========================
-   HEADER GLOBAL
-   ========================= */
 .site-header{
-  position: relative !important;
-  z-index: 50 !important;
-  overflow: visible !important;
-  background: url("http://plcl.me/images/QjQaP.png") center center / cover no-repeat !important;
+  position: relative;
+  overflow: visible !important;   /* KUNCI: dropdown jangan kepotong */
+  z-index: 50;                    /* header di atas konten lain */
 }
 
-/* isi menu agar tetap di atas background */
-.site-header > *,
+/* Background di belakang, tidak ganggu interaksi */
+.site-header::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;                    /* KUNCI: taruh paling bawah */
+  pointer-events: none;
+
+  background-image: url("http://plcl.me/images/QjQaP.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+}
+
+/* Pastikan nav & dropdown ada di atas semuanya */
 .site-header nav,
 .site-header .navbar,
 .site-header .menu,
 .site-header .main-menu,
 .site-header .nav{
-  position: relative !important;
-  z-index: 2 !important;
+  position: relative;
+  z-index: 9999;
 }
 
-/* dropdown menu */
+/* Kalau dropdown punya class khusus */
 .site-header .dropdown-menu,
 .site-header .sub-menu,
 .site-header .submenu{
-  position: absolute !important;
-  z-index: 9999 !important;
+  position: absolute;
+  z-index: 10000;
 }
 
-/* =========================
-   MOBILE
-   ========================= */
-@media only screen and (max-width: 768px){
-
-  .inner-body-container > .inner-body,
-  .inner-body{
-    padding-top: 0 !important;
-  }
-
+/* MOBILE */
+@media (max-width: 768px){
   .site-header{
-    background: url("http://plcl.me/images/QjQaP.png") center center / cover no-repeat !important;
-    min-height: 64px !important;
-    margin-top: 0 !important;
     overflow: hidden !important;
   }
 
+  .site-header::before{
+    background-size: auto 96px;
+    background-repeat: repeat-x;
+    background-position: right center;
+    opacity: .95;
+  }
 }
