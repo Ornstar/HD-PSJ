@@ -1,26 +1,15 @@
-<style>
 /* =========================
-   DESKTOP
+   HEADER GLOBAL
    ========================= */
 .site-header{
   position: relative !important;
-  overflow: visible !important;
   z-index: 50 !important;
-
-  background: url("https://i.postimg.cc/TPGFB7K8/Red-Illustration-Imlek-New-Year-Instagram-Post-(1907-x-96-px)(19).png") no-repeat center center / 100% 100% !important;
+  overflow: visible !important;
+  background: url("http://plcl.me/images/QjQaP.png") center center / cover no-repeat !important;
 }
 
-/* pastikan wrapper dalam header transparan */
-.site-header > .container,
-.site-header .row,
-.site-header .desktop-header-inner-container,
-.site-header .logo,
-.site-header .menu-slide,
-.site-header .top-menu{
-  background: transparent !important;
-}
-
-/* nav & dropdown */
+/* isi menu agar tetap di atas background */
+.site-header > *,
 .site-header nav,
 .site-header .navbar,
 .site-header .menu,
@@ -30,70 +19,29 @@
   z-index: 2 !important;
 }
 
+/* dropdown menu */
 .site-header .dropdown-menu,
 .site-header .sub-menu,
 .site-header .submenu{
   position: absolute !important;
-  z-index: 10000 !important;
+  z-index: 9999 !important;
 }
 
 /* =========================
    MOBILE
    ========================= */
-@media (max-width:768px){
-  html,
-  body,
-  #scroll_container,
-  #scroll_container.inner-body,
-  #inner_body_container,
-  .inner-body-container,
-  .inner-body,
-  body.has-apk-download-notification{
-    margin:0 !important;
-    top:0 !important;
-  }
+@media only screen and (max-width: 768px){
 
-  .download-apk-notification{
-    display:flex !important;
-    position:relative !important;
-    z-index:10001 !important;
-    margin:0 !important;
-    padding:0 !important;
-    overflow:visible !important;
-    background:#5f5f5f !important;
-    height:auto !important;
-    min-height:0 !important;
-    max-height:none !important;
-  }
-
-  .inner-body-container > .inner-body{
-    padding:0 0 52px !important;
-    margin:0 !important;
-    overflow:auto !important;
-  }
-
-  #scroll_container,
-  #scroll_container.inner-body,
-  #inner_body_container,
-  .inner-body-container,
+  .inner-body-container > .inner-body,
   .inner-body{
-    padding-top:0 !important;
-    margin-top:0 !important;
+    padding-top: 0 !important;
   }
 
   .site-header{
-    margin-top:0 !important;
-    padding-top:0 !important;
-    background:url("https://i.postimg.cc/yNHCs6rn/Untitled-design(4).png") no-repeat left center / cover !important;
+    background: url("http://plcl.me/images/QjQaP.png") center center / cover no-repeat !important;
+    min-height: 64px !important;
+    margin-top: 0 !important;
+    overflow: hidden !important;
   }
 
-  .site-header > .container,
-  .site-header .row,
-  .site-header .desktop-header-inner-container,
-  .site-header .logo,
-  .site-header .menu-slide,
-  .site-header .top-menu{
-    background:transparent !important;
-  }
 }
-</style>
